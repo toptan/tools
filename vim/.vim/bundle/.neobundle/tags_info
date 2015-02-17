@@ -1,0 +1,13 @@
+a.vim
+clang_complete
+jellybeans.vim
+neobundle.vim
+nerdcommenter
+nerdtree
+syntastic
+vim-airline
+vim-cmake-project
+vim-colors-solarized
+vim-colors-wombat
+vim-javascript
+vimux
