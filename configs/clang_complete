@@ -1,0 +1,8 @@
+-I/opt/local/libexec/llvm-3.5/bin/../include/c++/v1
+-I/usr/local/include
+-I/opt/local/include
+-I/opt/local/libexec/llvm-3.5/bin/../lib/clang/3.5.1/include
+-I/usr/include
+-I/System/Library/Frameworks
+-I/Library/Frameworks
+
