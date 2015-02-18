@@ -27,6 +27,8 @@ NeoBundle 'Rip-Rip/clang_complete'
 NeoBundle 'benmills/vimux'
 NeoBundle 'sigidagi/vim-cmake-project'
 NeoBundle 'bling/vim-airline'
+NeoBundle 'Chiel92/vim-autoformat'
+NeoBundle 'octol/vim-cpp-enhanced-highlight'
 
 " Required:
 call neobundle#end()
@@ -105,3 +107,13 @@ let g:clang_complete_copen = 1
 " let g:clang_conceal_snippets = 1
 
 set completeopt=menu,longest
+
+" Autoformat
+noremap <F3> :Autoformat<CR><CR>
+let g:formatprg_cpp = "astyle"
+let g:formatprg_args_cpp = system('cat ~/.astylerc | grep -v "^#.*" | grep -z')
+
+" C++11/14 syntax highlighting
+let g:cpp_class_scope_highlight = 1
+let g:cpp_experimental_template_highlight = 1
+
