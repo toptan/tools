@@ -14,21 +14,22 @@ call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Add or remove your Bundles here:
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'jeffreyiacono/vim-colors-wombat'
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'ervandew/supertab'
-NeoBundle 'vim-scripts/a.vim'
-NeoBundle 'Rip-Rip/clang_complete'
-NeoBundle 'benmills/vimux'
-NeoBundle 'sigidagi/vim-cmake-project'
-NeoBundle 'bling/vim-airline'
 NeoBundle 'Chiel92/vim-autoformat'
+NeoBundle 'Rip-Rip/clang_complete'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'benmills/vimux'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'ervandew/supertab'
+NeoBundle 'jeffreyiacono/vim-colors-wombat'
+NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'octol/vim-cpp-enhanced-highlight'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'sigidagi/vim-cmake-project'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'vim-scripts/a.vim'
 
 " Required:
 call neobundle#end()
@@ -117,3 +118,4 @@ let g:formatprg_args_cpp = system('cat ~/.astylerc | grep -v "^#.*" | grep -z')
 let g:cpp_class_scope_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 
+set statusline=%{fugitive#statusline()}
