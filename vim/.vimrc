@@ -17,17 +17,16 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'jeffreyiacono/vim-colors-wombat'
 NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'bling/vim-airline'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'pangloss/vim-javascript'
-" NeoBundle 'ervandew/supertab'
+NeoBundle 'ervandew/supertab'
 NeoBundle 'vim-scripts/a.vim'
 NeoBundle 'Rip-Rip/clang_complete'
 NeoBundle 'benmills/vimux'
 NeoBundle 'sigidagi/vim-cmake-project'
-"NeoBundle 'Ignotus/vim-cmake-project'
+NeoBundle 'bling/vim-airline'
 
 " Required:
 call neobundle#end()
@@ -39,7 +38,7 @@ NeoBundleCheck
 
 " Turn on syntax highlighting
 syntax on
-" Recognize file types for indentation and plugins
+:" Recognize file types for indentation and plugins
 filetype plugin indent on
 " Set colorscheme
 set background=dark 
@@ -87,7 +86,7 @@ let g:NERDTreeWinSize = 40
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " Airline symbols
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts=1
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
