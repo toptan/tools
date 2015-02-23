@@ -1,5 +1,5 @@
 "NeoBundle Scripts-----------------------------
-if has('vim_starting')  
+if has('vim_starting')
   set nocompatible               " Be iMproved
 
   " Required:
@@ -17,11 +17,10 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Chiel92/vim-autoformat'
 NeoBundle 'Rip-Rip/clang_complete'
 NeoBundle 'altercation/vim-colors-solarized'
+"NeoBundle 'vim-scripts/twilight256.vim'
 NeoBundle 'benmills/vimux'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'ervandew/supertab'
-NeoBundle 'jeffreyiacono/vim-colors-wombat'
-NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'octol/vim-cpp-enhanced-highlight'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'scrooloose/nerdcommenter'
@@ -30,13 +29,14 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'sigidagi/vim-cmake-project'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'vim-scripts/a.vim'
+"NeoBundle 'christoomey/vim-tmux-navigator'
 
 " Required:
 call neobundle#end()
 
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
-NeoBundleCheck  
+NeoBundleCheck
 "End NeoBundle Scripts-------------------------
 
 " Turn on syntax highlighting
@@ -44,8 +44,7 @@ syntax on
 :" Recognize file types for indentation and plugins
 filetype plugin indent on
 " Set colorscheme
-set background=dark 
-"colorscheme Tomorrow-Night-Bright 
+set background=light
 let g:solarized_termcolors = 256
 colorscheme solarized
 
@@ -64,7 +63,7 @@ set nobackup          " no backup before write
 set noswapfile        " no .swp madness
 
 " CMake formatting and syntax highlighting
-:autocmd BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in runtime! indent/cmake.vim 
+:autocmd BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in runtime! indent/cmake.vim
 :autocmd BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in setf cmake
 :autocmd BufRead,BufNewFile *.ctest,*.ctest.in setf cmake
 
@@ -118,4 +117,16 @@ let g:formatprg_args_cpp = system('cat ~/.astylerc | grep -v "^#.*" | grep -z')
 let g:cpp_class_scope_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 
-set statusline=%{fugitive#statusline()}
+noremap <c-j> <c-w>j
+noremap <c-k> <c-w>k
+noremap <c-l> <c-w>l
+noremap <c-h> <c-w>h
+
+"let g:tmux_navigator_no_mappings = 1
+
+"nnoremap <silent> {Left-mapping} :TmuxNavigateLeft<cr>
+"nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
+"nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
+"nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
+"nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
+
