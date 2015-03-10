@@ -101,7 +101,7 @@ let g:bufferline_echo = 0
 let g:clang_user_options = '-std=c++11'
 let g:clang_snippets = 1
 let g:clang_snippets_engine = 'clang_complete'
-let g:clang_library_path = '/opt/local/libexec/llvm-3.5/lib/'
+let g:clang_library_path = '/opt/local/libexec/llvm-3.6/lib/'
 let g:clang_close_preview = 1
 let g:clang_complete_copen = 1
 " let g:clang_conceal_snippets = 1
