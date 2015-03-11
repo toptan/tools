@@ -117,10 +117,28 @@ let g:formatprg_args_cpp = system('cat ~/.astylerc | grep -v "^#.*" | grep -z')
 let g:cpp_class_scope_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 
+" Syntastic stuff
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_cpp_checkers = ['cppcheck']
+let g:syntastic_c_checkers = ['cppcheck']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+
 noremap <c-j> <c-w>j
 noremap <c-k> <c-w>k
 noremap <c-l> <c-w>l
 noremap <c-h> <c-w>h
+
+" Cmake stuff
+noremap <F2> :CMakeOutput<CR>
+noremap <F8> :CMakeClean<CR>
+noremap <F9> :CMakeCompile<CR>
+noremap <S-F9> :CMakeBuild<CR>
 
 "let g:tmux_navigator_no_mappings = 1
 
