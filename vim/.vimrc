@@ -17,7 +17,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Chiel92/vim-autoformat'
 NeoBundle 'Rip-Rip/clang_complete'
 NeoBundle 'altercation/vim-colors-solarized'
-"NeoBundle 'vim-scripts/twilight256.vim'
 NeoBundle 'benmills/vimux'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'ervandew/supertab'
@@ -44,7 +43,7 @@ syntax on
 :" Recognize file types for indentation and plugins
 filetype plugin indent on
 " Set colorscheme
-set background=light
+set background=dark
 let g:solarized_termcolors = 256
 colorscheme solarized
 
@@ -88,7 +87,7 @@ let g:NERDTreeWinSize = 40
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " Airline symbols
-let g:airline_powerline_fonts=1
+let g:airline_powerline_fonts=0
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
