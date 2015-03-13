@@ -45,6 +45,7 @@ filetype plugin indent on
 " Set colorscheme
 set background=dark
 let g:solarized_termcolors = 256
+"let g:solarized_termtrans = 0
 colorscheme solarized
 
 set expandtab         " turn tabs into spaces
@@ -87,7 +88,7 @@ let g:NERDTreeWinSize = 40
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " Airline symbols
-let g:airline_powerline_fonts=0
+let g:airline_powerline_fonts=1
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
@@ -100,7 +101,7 @@ let g:bufferline_echo = 0
 let g:clang_user_options = '-std=c++11'
 let g:clang_snippets = 1
 let g:clang_snippets_engine = 'clang_complete'
-let g:clang_library_path = '/opt/local/libexec/llvm-3.6/lib/'
+let g:clang_library_path = '/opt/local/libexec/llvm-3.5/lib/'
 let g:clang_close_preview = 1
 let g:clang_complete_copen = 1
 " let g:clang_conceal_snippets = 1
