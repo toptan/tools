@@ -28,6 +28,8 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'sigidagi/vim-cmake-project'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'vim-scripts/a.vim'
+NeoBundle 'kana/vim-operator-user'
+NeoBundle 'rhysd/vim-clang-format'
 "NeoBundle 'christoomey/vim-tmux-navigator'
 
 " Required:
@@ -40,7 +42,7 @@ NeoBundleCheck
 
 " Turn on syntax highlighting
 syntax on
-:" Recognize file types for indentation and plugins
+" Recognize file types for indentation and plugins
 filetype plugin indent on
 " Set colorscheme
 set background=dark
@@ -109,9 +111,19 @@ let g:clang_complete_copen = 1
 set completeopt=menu,longest
 
 " Autoformat
-noremap <F3> :Autoformat<CR><CR>
-let g:formatprg_cpp = "astyle"
-let g:formatprg_args_cpp = system('cat ~/.astylerc | grep -v "^#.*" | grep -z')
+"noremap <F3> :Autoformat<CR><CR>
+"let g:formatprg_cpp = "astyle"
+"let g:formatprg_args_cpp = system('cat ~/.astylerc | grep -v "^#.*" | grep -z')
+
+" vim-clang-format
+let g:clang_format#code_style = "file"
+" map to <Leader>cf in C++ code
+autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+" if you install vim-operator-user
+autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
+" Toggle auto formatting:
+nmap <Leader>C :ClangFormatAutoToggle<CR>
 
 " C++11/14 syntax highlighting
 let g:cpp_class_scope_highlight = 1
@@ -136,9 +148,9 @@ noremap <c-h> <c-w>h
 
 " Cmake stuff
 noremap <F2> :CMakeOutput<CR>
+noremap <F7> :CMakeBuild<CR>
 noremap <F8> :CMakeClean<CR>
 noremap <F9> :CMakeCompile<CR>
-noremap <S-F9> :CMakeBuild<CR>
 
 "let g:tmux_navigator_no_mappings = 1
 
