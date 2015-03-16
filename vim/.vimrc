@@ -111,9 +111,9 @@ let g:clang_complete_copen = 1
 set completeopt=menu,longest
 
 " Autoformat
-"noremap <F3> :Autoformat<CR><CR>
-"let g:formatprg_cpp = "astyle"
-"let g:formatprg_args_cpp = system('cat ~/.astylerc | grep -v "^#.*" | grep -z')
+noremap <F3> :Autoformat<CR><CR>
+let g:formatprg_cpp = "astyle"
+let g:formatprg_args_cpp = system('cat ~/.astylerc | grep -v "^#.*" | grep -z')
 
 " vim-clang-format
 let g:clang_format#code_style = "file"
