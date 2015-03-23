@@ -51,8 +51,8 @@ let g:solarized_termcolors = 256
 colorscheme solarized
 
 set expandtab         " turn tabs into spaces
-set tabstop=4         " make tabs 2 wide
-set shiftwidth=4      " make shifts 2 spaces
+set tabstop=4         " make tabs 4 wide
+set shiftwidth=4      " make shifts 4 spaces
 set cursorline        " highlight cursorline
 set nowrap            " stop text wrapping
 set number            " show line numbers
@@ -63,6 +63,7 @@ set smarttab          " treat spaces like tabs
 set title             " show file name in window
 set nobackup          " no backup before write
 set noswapfile        " no .swp madness
+set backspace=2       " make backspace behave normaly
 
 " CMake formatting and syntax highlighting
 :autocmd BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in runtime! indent/cmake.vim
@@ -96,6 +97,7 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_symbols.space = "\ua0"
 let g:bufferline_echo = 0
+au VimEnter * exec 'AirlineTheme light'
 
 " clang_autocomplete configuration
 " compile all sources as c++11 (just for example, use .clang_complete for
