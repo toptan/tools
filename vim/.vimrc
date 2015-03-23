@@ -97,7 +97,7 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_symbols.space = "\ua0"
 let g:bufferline_echo = 0
-au VimEnter * exec 'AirlineTheme light'
+au VimEnter * exec 'AirlineTheme dark'
 
 " clang_autocomplete configuration
 " compile all sources as c++11 (just for example, use .clang_complete for
