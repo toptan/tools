@@ -30,6 +30,11 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'vim-scripts/a.vim'
 NeoBundle 'kana/vim-operator-user'
 NeoBundle 'rhysd/vim-clang-format'
+NeoBundle 'sven-strothoff/vim-clang_doxygen'
+NeoBundle 'SirVer/ultisnips'
+"NeoBundle 'hsanson/vim-android'
+"NeoBundle 'vim-scripts/javacomplete'
+
 "NeoBundle 'christoomey/vim-tmux-navigator'
 
 " Required:
@@ -45,7 +50,7 @@ syntax on
 " Recognize file types for indentation and plugins
 filetype plugin indent on
 " Set colorscheme
-set background=dark
+set background=light
 let g:solarized_termcolors = 256
 "let g:solarized_termtrans = 0
 colorscheme solarized
@@ -72,6 +77,12 @@ set backspace=2       " make backspace behave normaly
 
 let mapleader=","
 
+" Easier navigation between splits
+noremap <c-j> <c-w>j
+noremap <c-k> <c-w>k
+noremap <c-l> <c-w>l
+noremap <c-h> <c-w>h
+
 " Make extra whitespace visible
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
@@ -97,7 +108,7 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_symbols.space = "\ua0"
 let g:bufferline_echo = 0
-au VimEnter * exec 'AirlineTheme dark'
+au VimEnter * exec 'AirlineTheme light'
 
 " clang_autocomplete configuration
 " compile all sources as c++11 (just for example, use .clang_complete for
@@ -105,7 +116,7 @@ au VimEnter * exec 'AirlineTheme dark'
 let g:clang_user_options = '-std=c++11'
 let g:clang_snippets = 1
 let g:clang_snippets_engine = 'clang_complete'
-let g:clang_library_path = '/opt/local/libexec/llvm-3.5/lib/'
+"let g:clang_library_path = '/opt/local/libexec/llvm-3.5/lib/'
 let g:clang_close_preview = 1
 let g:clang_complete_copen = 1
 " let g:clang_conceal_snippets = 1
@@ -143,10 +154,9 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 
-noremap <c-j> <c-w>j
-noremap <c-k> <c-w>k
-noremap <c-l> <c-w>l
-noremap <c-h> <c-w>h
+" clang_doxygen plugin
+let g:clang_doxygen_clang_args = ["-std=c++11"]
+let g:clang_doxygen_snippet_plugin = "ultisnips"
 
 " Cmake stuff
 noremap <F2> :CMakeOutput<CR>
