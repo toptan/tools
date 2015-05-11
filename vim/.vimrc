@@ -30,10 +30,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'vim-scripts/a.vim'
 NeoBundle 'kana/vim-operator-user'
 NeoBundle 'rhysd/vim-clang-format'
-NeoBundle 'sven-strothoff/vim-clang_doxygen'
-NeoBundle 'SirVer/ultisnips'
-"NeoBundle 'hsanson/vim-android'
-"NeoBundle 'vim-scripts/javacomplete'
+NeoBundle 'DoxygenToolkit.vim'
 
 "NeoBundle 'christoomey/vim-tmux-navigator'
 
@@ -54,6 +51,9 @@ set background=light
 let g:solarized_termcolors = 256
 "let g:solarized_termtrans = 0
 colorscheme solarized
+
+let g:load_doxygen_syntax = 1
+let g:doxygen_enhanced_color = 0
 
 set expandtab         " turn tabs into spaces
 set tabstop=4         " make tabs 4 wide
@@ -154,11 +154,17 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 
-" clang_doxygen plugin
-let g:clang_doxygen_clang_args = ["-std=c++11"]
-let g:clang_doxygen_snippet_plugin = "ultisnips"
+" DoxygenToolkit
+"let g:DoxygenToolkit_compactOneLineDoc = "yes"
+let g:DoxygenToolkit_commentType = "C++"
+"let g:DoxygenToolkit_briefTag="\\brief "
+let g:DoxygenToolkit_briefTag_pre="\\brief "
+let g:DoxygenToolkit_paramTag_pre="\\param "
+let g:DoxygenToolkit_returnTag="\\return "
+"let g:DoxygenToolkit_blockHeader="--------------------------------------------------------------------------"
+"let g:DoxygenToolkit_blockFooter="----------------------------------------------------------------------------"
+let g:DoxygenToolkit_authorName="Toplica Tanasković"
 
-" Cmake stuff
 noremap <F2> :CMakeOutput<CR>
 noremap <F7> :CMakeBuild<CR>
 noremap <F8> :CMakeClean<CR>
