@@ -1,9 +1,9 @@
 "NeoBundle Scripts-----------------------------
 if has('vim_starting')
-  set nocompatible               " Be iMproved
+    set nocompatible               " Be iMproved
 
-  " Required:
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+    " Required:
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
 " Required:
@@ -49,7 +49,7 @@ filetype plugin indent on
 " Set colorscheme
 set background=light
 let g:solarized_termcolors = 256
-"let g:solarized_termtrans = 0
+let g:solarized_termtrans = 1
 colorscheme solarized
 
 let g:load_doxygen_syntax = 1
@@ -104,11 +104,11 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " Airline symbols
 let g:airline_powerline_fonts=1
 if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
+    let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
 let g:bufferline_echo = 0
-au VimEnter * exec 'AirlineTheme light'
+"au VimEnter * exec 'AirlineTheme light'
 
 " clang_autocomplete configuration
 " compile all sources as c++11 (just for example, use .clang_complete for
@@ -116,7 +116,7 @@ au VimEnter * exec 'AirlineTheme light'
 let g:clang_user_options = '-std=c++11'
 let g:clang_snippets = 1
 let g:clang_snippets_engine = 'clang_complete'
-"let g:clang_library_path = '/opt/local/libexec/llvm-3.5/lib/'
+"let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
 let g:clang_close_preview = 1
 let g:clang_complete_copen = 1
 " let g:clang_conceal_snippets = 1
