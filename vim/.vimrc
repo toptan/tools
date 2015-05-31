@@ -19,6 +19,7 @@ NeoBundle 'Rip-Rip/clang_complete'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'benmills/vimux'
 NeoBundle 'bling/vim-airline'
+NeoBundle 'edkolev/tmuxline.vim'
 NeoBundle 'ervandew/supertab'
 NeoBundle 'octol/vim-cpp-enhanced-highlight'
 NeoBundle 'pangloss/vim-javascript'
@@ -116,7 +117,7 @@ let g:bufferline_echo = 0
 let g:clang_user_options = '-std=c++11'
 let g:clang_snippets = 1
 let g:clang_snippets_engine = 'clang_complete'
-"let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
+let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
 let g:clang_close_preview = 1
 let g:clang_complete_copen = 1
 " let g:clang_conceal_snippets = 1
