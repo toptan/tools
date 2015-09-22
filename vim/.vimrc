@@ -48,7 +48,7 @@ syntax on
 " Recognize file types for indentation and plugins
 filetype plugin indent on
 " Set colorscheme
-set background=light
+set background=dark
 let g:solarized_termcolors = 256
 let g:solarized_termtrans = 1
 colorscheme solarized
@@ -117,7 +117,8 @@ let g:bufferline_echo = 0
 let g:clang_user_options = '-std=c++11'
 let g:clang_snippets = 1
 let g:clang_snippets_engine = 'clang_complete'
-let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
+"let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
+let g:clang_library_path = '/usr/lib/llvm-3.5/lib/'
 let g:clang_close_preview = 1
 let g:clang_complete_copen = 1
 " let g:clang_conceal_snippets = 1
