@@ -15,24 +15,24 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Add or remove your Bundles here:
 NeoBundle 'Chiel92/vim-autoformat'
+NeoBundle 'DoxygenToolkit.vim'
 NeoBundle 'Rip-Rip/clang_complete'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'benmills/vimux'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'edkolev/tmuxline.vim'
 NeoBundle 'ervandew/supertab'
+NeoBundle 'kana/vim-operator-user'
 NeoBundle 'octol/vim-cpp-enhanced-highlight'
 NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'rhysd/vim-clang-format'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'sigidagi/vim-cmake-project'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'vim-scripts/a.vim'
-NeoBundle 'kana/vim-operator-user'
-NeoBundle 'rhysd/vim-clang-format'
-NeoBundle 'DoxygenToolkit.vim'
-
+NeoBundle 'klen/python-mode'
 "NeoBundle 'christoomey/vim-tmux-navigator'
 
 " Required:
@@ -48,9 +48,9 @@ syntax on
 " Recognize file types for indentation and plugins
 filetype plugin indent on
 " Set colorscheme
-set background=dark
-let g:solarized_termcolors = 256
-let g:solarized_termtrans = 1
+set background=light
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
 colorscheme solarized
 
 let g:load_doxygen_syntax = 1
@@ -87,6 +87,15 @@ noremap <c-h> <c-w>h
 " Make extra whitespace visible
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
+
+" Clear search highlights
+noremap <silent><Leader>/ :nohls<CR>
+
+" Select all text in current buffer
+map <Leader>a ggVG
+
+" Indend the whole buffer
+map <Leader>f gg=G
 
 " Use TAB to jump between matching things
 " nnoremap <Tab> %
@@ -126,9 +135,11 @@ let g:clang_complete_copen = 1
 set completeopt=menu,longest
 
 " Autoformat
-noremap <F3> :Autoformat<CR><CR>
-let g:formatprg_cpp = "astyle"
-let g:formatprg_args_cpp = system('cat ~/.astylerc | grep -v "^#.*" | grep -z')
+noremap <F3> :Autoformat<CR>
+let g:formatters_c = ['astyle']
+let g:formatters_cpp = ['astyle']
+let g:formatdef_astyle = '"astyle --options=$HOME/.astylerc"'
+"let g:formatprg_args_cpp = system('cat ~/.astylerc | grep -v "^#.*" | grep -z')
 
 " vim-clang-format
 let g:clang_format#code_style = "file"
@@ -171,6 +182,56 @@ noremap <F2> :CMakeOutput<CR>
 noremap <F7> :CMakeBuild<CR>
 noremap <F8> :CMakeClean<CR>
 noremap <F9> :CMakeCompile<CR>
+
+if exists('+colorcolumn')
+    set colorcolumn=100
+else
+    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
+
+" Python-mode
+" Activate rope
+" Keys:
+" K             Show python docs
+" <Ctrl-Space>  Rope autocomplete
+" <Ctrl-c>g     Rope goto definition
+" <Ctrl-c>d     Rope show documentation
+" <Ctrl-c>f     Rope find occurrences
+" <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
+" [[            Jump on previous class or function (normal, visual, operator modes)
+" ]]            Jump on next class or function (normal, visual, operator modes)
+" [M            Jump on previous class or method (normal, visual, operator modes)
+" ]M            Jump on next class or method (normal, visual, operator modes)
+let g:pymode_rope = 1
+
+" Documentation
+ let g:pymode_doc = 1
+ let g:pymode_doc_key = 'K'
+
+" Linting
+let g:pymode_lint = 1
+let g:pymode_lint_checker = "pyflakes,pep8"
+let g:pymode_options_max_line_length = 120
+"let g:pymode_lint_options = {'max-line-length': g:pymode_options_max_line_length}
+
+" Auto check on save
+let g:pymode_lint_write = 1
+
+" Support virtualenv
+let g:pymode_virtualenv = 1
+
+" Enable breakpoints plugin
+let g:pymode_breakpoint = 1
+let g:pymode_breakpoint_bind = '<leader>b'
+
+" Syntax highlighting
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+
+" Don't autofold code
+let g:pymode_folding = 0
 
 "let g:tmux_navigator_no_mappings = 1
 
