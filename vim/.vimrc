@@ -123,11 +123,12 @@ let g:bufferline_echo = 0
 " clang_autocomplete configuration
 " compile all sources as c++11 (just for example, use .clang_complete for
 " setting version of the language per project)
-let g:clang_user_options = '-std=c++11'
+let g:clang_user_options = '-std=c++14'
 let g:clang_snippets = 1
 let g:clang_snippets_engine = 'clang_complete'
-"let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
-let g:clang_library_path = '/usr/lib/llvm-3.5/lib/'
+let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
+"let g:clang_library_path = '/opt/local/libexec/llvm-3.7/lib/libclang.dylib'
+"let g:clang_library_path = '/usr/lib/llvm-3.5/lib/'
 let g:clang_close_preview = 1
 let g:clang_complete_copen = 1
 " let g:clang_conceal_snippets = 1
@@ -135,7 +136,7 @@ let g:clang_complete_copen = 1
 set completeopt=menu,longest
 
 " Autoformat
-noremap <F3> :Autoformat<CR>
+" noremap <F3> :Autoformat<CR>
 let g:formatters_c = ['astyle']
 let g:formatters_cpp = ['astyle']
 let g:formatdef_astyle = '"astyle --options=$HOME/.astylerc"'
@@ -144,8 +145,11 @@ let g:formatdef_astyle = '"astyle --options=$HOME/.astylerc"'
 " vim-clang-format
 let g:clang_format#code_style = "file"
 " map to <Leader>cf in C++ code
-autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
-autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+" autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+" autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+autocmd FileType c,cpp,objc nnoremap <buffer><F3> :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp,objc vnoremap <buffer><F3> :ClangFormat<CR>
+
 " if you install vim-operator-user
 autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
 " Toggle auto formatting:
@@ -170,13 +174,23 @@ let g:syntastic_check_on_wq = 1
 " DoxygenToolkit
 "let g:DoxygenToolkit_compactOneLineDoc = "yes"
 let g:DoxygenToolkit_commentType = "C++"
-"let g:DoxygenToolkit_briefTag="\\brief "
 let g:DoxygenToolkit_briefTag_pre="\\brief "
 let g:DoxygenToolkit_paramTag_pre="\\param "
+let g:DoxygenToolkit_templateParamTag_pre="\\tparam "
 let g:DoxygenToolkit_returnTag="\\return "
+let g:DoxygenToolkit_throwTag_pre="\\throw "
+let g:DoxygenToolkit_fileTag="\\file "
+let g:DoxygenToolkit_authorTag="\\author "
+let g:DoxygenToolkit_dateTag="\\date "
+let g:DoxygenToolkit_versionTag="\\version "
+let g:DoxygenToolkit_blockTag="\\name "
+let g:DoxygenToolkit_classTag="\\class "
+
+noremap <F4> :Dox<CR>
+
 "let g:DoxygenToolkit_blockHeader="--------------------------------------------------------------------------"
 "let g:DoxygenToolkit_blockFooter="----------------------------------------------------------------------------"
-let g:DoxygenToolkit_authorName="Toplica Tanasković"
+let g:DoxygenToolkit_authorName="Toplica Tanasković <toplicius@gmail.com>"
 
 noremap <F2> :CMakeOutput<CR>
 noremap <F7> :CMakeBuild<CR>
