@@ -14,7 +14,7 @@ call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Add or remove your Bundles here:
-NeoBudnle 'jalcine/cmake.vim'
+NeoBundle 'jalcine/cmake.vim'
 NeoBundle 'Chiel92/vim-autoformat'
 NeoBundle 'DoxygenToolkit.vim'
 NeoBundle 'Rip-Rip/clang_complete'
