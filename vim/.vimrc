@@ -14,7 +14,8 @@ call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Add or remove your Bundles here:
-NeoBundle 'jalcine/cmake.vim'
+"NeoBundle 'christoomey/vim-tmux-navigator'
+"NeoBundle 'sigidagi/vim-cmake-project'
 NeoBundle 'Chiel92/vim-autoformat'
 NeoBundle 'DoxygenToolkit.vim'
 NeoBundle 'Rip-Rip/clang_complete'
@@ -22,6 +23,7 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'benmills/vimux'
 NeoBundle 'edkolev/tmuxline.vim'
 NeoBundle 'ervandew/supertab'
+NeoBundle 'jalcine/cmake.vim'
 NeoBundle 'kana/vim-operator-user'
 NeoBundle 'klen/python-mode'
 NeoBundle 'octol/vim-cpp-enhanced-highlight'
@@ -30,12 +32,10 @@ NeoBundle 'rhysd/vim-clang-format'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'sigidagi/vim-cmake-project'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'vim-scripts/a.vim'
-"NeoBundle 'christoomey/vim-tmux-navigator'
 
 " Required:
 call neobundle#end()
@@ -50,8 +50,8 @@ syntax on
 " Recognize file types for indentation and plugins
 filetype plugin indent on
 " Set colorscheme
-"set background=light
-set background=dark
+set background=light
+"set background=dark
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 colorscheme solarized
@@ -195,13 +195,8 @@ noremap <F4> :Dox<CR>
 "let g:DoxygenToolkit_blockFooter="----------------------------------------------------------------------------"
 let g:DoxygenToolkit_authorName="Toplica Tanasković <toplicius@gmail.com>"
 
-noremap <F2> :CMakeOutput<CR>
-noremap <F7> :CMakeBuild<CR>
-noremap <F8> :CMakeClean<CR>
-noremap <F9> :CMakeCompile<CR>
-
 if exists('+colorcolumn')
-    set colorcolumn=100
+    set colorcolumn=80
 else
     au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
