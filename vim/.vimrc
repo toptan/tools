@@ -14,15 +14,16 @@ call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Add or remove your Bundles here:
+"NeoBundle 'Rip-Rip/clang_complete'
 "NeoBundle 'christoomey/vim-tmux-navigator'
+"NeoBundle 'ervandew/supertab'
 "NeoBundle 'sigidagi/vim-cmake-project'
 NeoBundle 'Chiel92/vim-autoformat'
 NeoBundle 'DoxygenToolkit.vim'
-NeoBundle 'Rip-Rip/clang_complete'
+NeoBundle 'Valloric/YouCompleteMe'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'benmills/vimux'
 NeoBundle 'edkolev/tmuxline.vim'
-NeoBundle 'ervandew/supertab'
 NeoBundle 'jalcine/cmake.vim'
 NeoBundle 'kana/vim-operator-user'
 NeoBundle 'klen/python-mode'
@@ -36,6 +37,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'vim-scripts/a.vim'
+NeoBundle 'rdnetto/YCM-Generator', 'stable'
 
 " Required:
 call neobundle#end()
@@ -126,17 +128,20 @@ let g:bufferline_echo = 0
 " clang_autocomplete configuration
 " compile all sources as c++11 (just for example, use .clang_complete for
 " setting version of the language per project)
-let g:clang_user_options = '-std=c++14'
-let g:clang_snippets = 1
-let g:clang_snippets_engine = 'clang_complete'
-let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
+"let g:clang_user_options = '-std=c++14'
+"let g:clang_snippets = 1
+"let g:clang_snippets_engine = 'clang_complete'
+"let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
 "let g:clang_library_path = '/opt/local/libexec/llvm-3.7/lib/libclang.dylib'
 "let g:clang_library_path = '/usr/lib/llvm-3.5/lib/'
-let g:clang_close_preview = 1
-let g:clang_complete_copen = 1
+"let g:clang_close_preview = 1
+"let g:clang_complete_copen = 1
 " let g:clang_conceal_snippets = 1
 
 set completeopt=menu,longest
+
+" YouCompleteMe
+let g:ycm_confirm_extra_conf = 0
 
 " Autoformat
 " noremap <F3> :Autoformat<CR>
@@ -173,6 +178,17 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
+let g:syntastic_enable_highlighting = 1
+
+let g:syntastic_error_symbol = '❌'
+let g:syntastic_style_error_symbol = '⁉️'
+let g:syntastic_warning_symbol = '⚠️'
+let g:syntastic_style_warning_symbol = '💩'
+
+highlight link SyntasticErrorSign SignColumn
+highlight link SyntasticWarningSign SignColumn
+highlight link SyntasticStyleErrorSign SignColumn
+highlight link SyntasticStyleWarningSign SignColumn
 
 " DoxygenToolkit
 "let g:DoxygenToolkit_compactOneLineDoc = "yes"
