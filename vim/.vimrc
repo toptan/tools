@@ -14,16 +14,15 @@ call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Add or remove your Bundles here:
-"NeoBundle 'Rip-Rip/clang_complete'
 "NeoBundle 'christoomey/vim-tmux-navigator'
-"NeoBundle 'ervandew/supertab'
 "NeoBundle 'sigidagi/vim-cmake-project'
 NeoBundle 'Chiel92/vim-autoformat'
 NeoBundle 'DoxygenToolkit.vim'
-NeoBundle 'Valloric/YouCompleteMe'
+NeoBundle 'Rip-Rip/clang_complete'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'benmills/vimux'
 NeoBundle 'edkolev/tmuxline.vim'
+NeoBundle 'ervandew/supertab'
 NeoBundle 'jalcine/cmake.vim'
 NeoBundle 'kana/vim-operator-user'
 NeoBundle 'klen/python-mode'
@@ -37,7 +36,6 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'vim-scripts/a.vim'
-NeoBundle 'rdnetto/YCM-Generator', 'stable'
 
 " Required:
 call neobundle#end()
@@ -110,6 +108,10 @@ imap { :tabprevious<CR>
 
 " Use TAB to jump between matching things
 " nnoremap <Tab> %
+"map } :tabnext<CR>
+"imap } :tabnext<CR>
+"map { :tabprevious<CR>
+"imap { :tabprevious<CR>
 
 " Plugin configuration
 " --------------------
@@ -134,23 +136,20 @@ let g:bufferline_echo = 0
 " clang_autocomplete configuration
 " compile all sources as c++11 (just for example, use .clang_complete for
 " setting version of the language per project)
-"let g:clang_user_options = '-std=c++14'
-"let g:clang_snippets = 1
-"let g:clang_snippets_engine = 'clang_complete'
+let g:clang_user_options = '-std=c++11'
+let g:clang_snippets = 1
+let g:clang_snippets_engine = 'clang_complete'
 "let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
 "let g:clang_library_path = '/opt/local/libexec/llvm-3.7/lib/libclang.dylib'
-"let g:clang_library_path = '/usr/lib/llvm-3.5/lib/'
-"let g:clang_close_preview = 1
-"let g:clang_complete_copen = 1
+let g:clang_library_path = '/usr/lib/llvm-3.6/lib/'
+let g:clang_close_preview = 1
+let g:clang_complete_copen = 1
 " let g:clang_conceal_snippets = 1
 
 set completeopt=menu,longest
 
-" YouCompleteMe
-let g:ycm_confirm_extra_conf = 0
-
 " Autoformat
-" noremap <F3> :Autoformat<CR>
+noremap <F3> :Autoformat<CR>
 let g:formatters_c = ['astyle']
 let g:formatters_cpp = ['astyle']
 let g:formatdef_astyle = '"astyle --options=$HOME/.astylerc"'
@@ -161,8 +160,8 @@ let g:clang_format#code_style = "file"
 " map to <Leader>cf in C++ code
 " autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 " autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
-autocmd FileType c,cpp,objc nnoremap <buffer><F3> :<C-u>ClangFormat<CR>
-autocmd FileType c,cpp,objc vnoremap <buffer><F3> :ClangFormat<CR>
+"autocmd FileType c,cpp,objc nnoremap <buffer><F3> :<C-u>ClangFormat<CR>
+"autocmd FileType c,cpp,objc vnoremap <buffer><F3> :ClangFormat<CR>
 
 " if you install vim-operator-user
 autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
