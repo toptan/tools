@@ -14,8 +14,6 @@ call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Add or remove your Bundles here:
-"NeoBundle 'christoomey/vim-tmux-navigator'
-"NeoBundle 'sigidagi/vim-cmake-project'
 NeoBundle 'Chiel92/vim-autoformat'
 NeoBundle 'DoxygenToolkit.vim'
 NeoBundle 'Rip-Rip/clang_complete'
@@ -23,7 +21,6 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'benmills/vimux'
 NeoBundle 'edkolev/tmuxline.vim'
 NeoBundle 'ervandew/supertab'
-"NeoBundle 'jalcine/cmake.vim'
 NeoBundle 'kana/vim-operator-user'
 NeoBundle 'klen/python-mode'
 NeoBundle 'octol/vim-cpp-enhanced-highlight'
@@ -36,6 +33,9 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'vim-scripts/a.vim'
+NeoBundle 'vim-scripts/indentpython.vim'
+NeoBundle 'Valloric/YouCompleteMe'
+NeoBundle 'nvie/vim-flake8'
 
 " Required:
 call neobundle#end()
@@ -51,7 +51,7 @@ syntax on
 filetype plugin indent on
 " Set colorscheme
 set background=light
-"set background=dark
+" set background=dark
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 colorscheme solarized
@@ -73,11 +73,26 @@ set title             " show file name in window
 set nobackup          " no backup before write
 set noswapfile        " no .swp madness
 set backspace=2       " make backspace behave normaly
+set encoding=utf-8
 
 " CMake formatting and syntax highlighting
 :autocmd BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in runtime! indent/cmake.vim
 :autocmd BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in setf cmake
 :autocmd BufRead,BufNewFile *.ctest,*.ctest.in setf cmake
+au BufRead,BufNewFile *.py;
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+au BufRead,BufNewFile *.js, *.html, *.css;
+    \ set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
+highlight BadWhitespace ctermbg=darkred guibg=darkred
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.cpp,*.h,*.hpp match BadWhitespace /\s\+$/
 
 let mapleader=","
 
@@ -122,6 +137,7 @@ set laststatus=2
 nmap <silent> <F5> :NERDTreeToggle<CR>
 nmap <silent> <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize = 40
+let g:NERDTreeIgnore=['\.pyc$', '\~$']
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " Airline symbols
@@ -139,12 +155,9 @@ let g:bufferline_echo = 0
 let g:clang_user_options = '-std=c++11'
 let g:clang_snippets = 1
 let g:clang_snippets_engine = 'clang_complete'
-"let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
-"let g:clang_library_path = '/opt/local/libexec/llvm-3.7/lib/libclang.dylib'
-let g:clang_library_path = '/usr/lib/llvm-3.6/lib/'
+let g:clang_library_path = '/Applications/Xcode.app/Contents/Frameworks/libclang.dylib'
 let g:clang_close_preview = 1
 let g:clang_complete_copen = 1
-" let g:clang_conceal_snippets = 1
 
 set completeopt=menu,longest
 
@@ -238,13 +251,13 @@ endif
 let g:pymode_rope = 0
 
 " Documentation
- let g:pymode_doc = 1
- let g:pymode_doc_key = 'K'
+let g:pymode_doc = 1
+let g:pymode_doc_key = 'K'
 
 " Linting
 let g:pymode_lint = 1
 let g:pymode_lint_checker = "pyflakes,pep8"
-let g:pymode_options_max_line_length = 120
+let g:pymode_options_max_line_length = 80
 "let g:pymode_lint_options = {'max-line-length': g:pymode_options_max_line_length}
 
 " Auto check on save
@@ -262,15 +275,23 @@ let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
 let g:pymode_syntax_indent_errors = g:pymode_syntax_all
 let g:pymode_syntax_space_errors = g:pymode_syntax_all
+let python_highlight_all = 1
 
 " Don't autofold code
 let g:pymode_folding = 0
 
-"let g:tmux_navigator_no_mappings = 1
+" Autoclose preview window after completion
+map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-"nnoremap <silent> {Left-mapping} :TmuxNavigateLeft<cr>
-"nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
-"nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
-"nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
-"nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
+"python with virtualenv support
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
+EOF
+
+let g:ycm_python_binary_path = 'python3'
 
